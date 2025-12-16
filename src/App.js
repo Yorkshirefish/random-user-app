@@ -26,10 +26,14 @@ function App() {
     loadUser();
   }, []);
 
+  console.log(user)
+
 
   return (
     <div>
-      <UserProfile userName={user.name}/>
+      {loading && "Is Loading"}
+      {error && "There was an error"}
+      {user && !loading ? <UserProfile userName={user.name} userPicture={user.picture.large} userGender={user.gender} userAge={user.dob.age} userCountry={user.location.country} loadUser={loadUser} /> : ""}
     </div>
   );
 }
